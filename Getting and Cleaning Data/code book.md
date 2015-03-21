@@ -5,7 +5,7 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
 2. "activity"   
   The name of the activity the data was measured for.
   
-The remaining fields can be deciphered by using the following:
+The remaining fields can be deciphered by using the following: 
 't' denotes a time measurement  
 'f' indicates frequency domain signal   
 'Body' indicates a force caused by the subject's body  
@@ -20,7 +20,7 @@ The remaining fields can be deciphered by using the following:
 'mean' is the average of all measurements in timeframe  
 'std' is the standard deviation of the measurments in timeframe  
    
-3. "tBodyAcc.mean...X"
+1. "tBodyAcc.mean...X"
 4. "tBodyAcc.mean...Y"          
 5. "tBodyAcc.mean...Z"          
 6. "tGravityAcc.mean...X"       
