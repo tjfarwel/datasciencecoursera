@@ -6,7 +6,7 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
   The name of the activity the data was measured for.
   
 The remaining fields can be deciphered by using the following:
-	't' denotes a time measurement 
+'t' denotes a time measurement 
 'f' indicates frequency domain signal
 'Body' indicates a force caused by the subject's body
 'Gravity' indicates gravitational force
