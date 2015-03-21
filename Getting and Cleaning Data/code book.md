@@ -1,8 +1,8 @@
 This is the code book for the "part1.txt" file that run_analysis.R creates.
 
- 1. "subject"
+1. "subject"
   Represents which test subject the data is for.
- 2. "activity"   
+2. "activity"   
   The name of the activity the data was measured for.
   
   The remaining fields can be deciphered by using the following:
@@ -18,13 +18,13 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
     'Y' is the measure in direction Y
     'Z' is the measure in direction Z
     
- 3. "tBodyAcc.mean...X"
- 4. "tBodyAcc.mean...Y"          
- 5. "tBodyAcc.mean...Z"          
- 6. "tGravityAcc.mean...X"       
- 7. "tGravityAcc.mean...Y"       
- 8. "tGravityAcc.mean...Z"       
- 9."tBodyAccJerk.mean...X"      
+3. "tBodyAcc.mean...X"
+4. "tBodyAcc.mean...Y"          
+5. "tBodyAcc.mean...Z"          
+6. "tGravityAcc.mean...X"       
+7. "tGravityAcc.mean...Y"       
+8. "tGravityAcc.mean...Z"       
+9."tBodyAccJerk.mean...X"      
 10. "tBodyAccJerk.mean...Y"      
 11. "tBodyAccJerk.mean...Z"      
 12. "tBodyGyro.mean...X"         
