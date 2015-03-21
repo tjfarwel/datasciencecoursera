@@ -5,20 +5,20 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
 2. "activity"   
   The name of the activity the data was measured for.
   
-The remaining fields can be deciphered by using the following:  
-'t' denotes a time measurement  
-'f' indicates frequency domain signal   
-'Body' indicates a force caused by the subject's body  
-'Gravity' indicates gravitational force  
-'Acc' is a measurement of Linear acceleration  
-'Gyro' is a measure of angular velocity  
-'Jerk' is a mearure of the rate of change of acceleration   
-'Mag' is the magnitude(strength) of the measurement  
-'X' is the measure in direction X  
-'Y' is the measure in direction Y  
-'Z' is the measure in direction Z  
-'mean' is the average of all measurements in timeframe  
-'std' is the standard deviation of the measurments in timeframe  
+    The remaining fields can be deciphered by using the following:  
+    't' denotes a time measurement  
+    'f' indicates frequency domain signal   
+    'Body' indicates a force caused by the subject's body  
+    'Gravity' indicates gravitational force  
+    'Acc' is a measurement of Linear acceleration  
+    'Gyro' is a measure of angular velocity  
+    'Jerk' is a mearure of the rate of change of acceleration   
+    'Mag' is the magnitude(strength) of the measurement  
+    'X' is the measure in direction X  
+    'Y' is the measure in direction Y  
+    'Z' is the measure in direction Z  
+    'mean' is the average of all measurements in timeframe  
+    'std' is the standard deviation of the measurments in timeframe  
    
 3. "tBodyAcc.mean...X"
 4. "tBodyAcc.mean...Y"          
