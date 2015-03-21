@@ -17,6 +17,8 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
     'X' is the measure in direction X
     'Y' is the measure in direction Y
     'Z' is the measure in direction Z
+    'mean' is the average of all measurements in timeframe
+    'std' is the standard deviation of the measurments in timeframe
     
 3. "tBodyAcc.mean...X"
 4. "tBodyAcc.mean...Y"          
@@ -24,7 +26,7 @@ This is the code book for the "part1.txt" file that run_analysis.R creates.
 6. "tGravityAcc.mean...X"       
 7. "tGravityAcc.mean...Y"       
 8. "tGravityAcc.mean...Z"       
-9."tBodyAccJerk.mean...X"      
+9. "tBodyAccJerk.mean...X"      
 10. "tBodyAccJerk.mean...Y"      
 11. "tBodyAccJerk.mean...Z"      
 12. "tBodyGyro.mean...X"         
