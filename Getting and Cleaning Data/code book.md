@@ -20,7 +20,7 @@ The remaining fields can be deciphered by using the following:
 'mean' is the average of all measurements in timeframe  
 'std' is the standard deviation of the measurments in timeframe  
    
-1. "tBodyAcc.mean...X"
+3. "tBodyAcc.mean...X"
 4. "tBodyAcc.mean...Y"          
 5. "tBodyAcc.mean...Z"          
 6. "tGravityAcc.mean...X"       
