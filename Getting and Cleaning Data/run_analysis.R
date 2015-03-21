@@ -7,7 +7,7 @@
      features <- read.table("UCI HAR Dataset\\features.txt")
      features <- features[,c(2)]
      features <- as.vector(features)
-     #merge 3 training sets into 1 file
+     
      subtest <- read.table("UCI HAR Dataset\\test\\subject_test.txt")
      
      Xtest <- read.table("UCI HAR Dataset\\test\\X_test.txt")
@@ -18,7 +18,7 @@
      
      names(data1)[c(1,2)] <- c("subject", "activity")
      names(data1)[c(3:563)] <- features
-     #merge 3 test sets into 1 file
+     
      subtrain <- read.table("UCI HAR Dataset\\train\\subject_train.txt")
      
      Xtrain <- read.table("UCI HAR Dataset\\train\\X_train.txt")
@@ -41,9 +41,7 @@
     levels(data$activity) <- activities
     write.table(data, "part1.txt", row.name= FALSE)
      
-     #have to use select(df, contains("mean | std")) on X*
-     
-     #combine 2 new sets sorting by test subject
+    
     
     #part 2
     grouped_data <- group_by(data, subject, activity)
