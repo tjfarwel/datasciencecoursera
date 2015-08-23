@@ -1,0 +1,99 @@
+---
+title: "Predicting Bicep Curl Classification"
+author: "tjfarwel"
+date: "Thursday, August 20, 2015"
+output: html_document
+---
+
+This analysis will try to predict the class of an exercisor making a movement known as a bicep curl. There are 5 different styles, or classes, in which a person a person is classified in their attempt. Only 1 movement is physiologically correct the others are considered improper form. Sensors are placed on different areas of a the users body and various aspects, such as acceleration, are recorded. We are given a training dataset with 160 variables and 19622 observations and a test set of 20 observations which the classes will be predicted.
+
+#Reading, Exploring, and Preprocessing the Data
+
+```{r results='hide'}
+training = read.csv("pml-training.csv", stringsAsFactors = FALSE)
+testing = read.csv("pml-testing.csv", stringsAsFactors = FALSE)
+summary(training)
+```
+The results of the above code was not shown due to their being so many variables. By examining this data it can be observed that
+the data is very sparse. There are many variables with empty data. Some are NA's and some have empty strings. Next the code
+will remove the variables with sparse columns. Columns 1 through 7 are also removed because it doesn't make much sencse to include these in trying to predict the class.
+
+
+```{r }
+#remove columns with many NA's, except last column which is response variable
+sparse.columns = c()
+for(i in 1:(dim(training)[2]-1)){
+    if(sum(is.na(training[,i])) > 1000 || is.character(training[,i])){
+        sparse.columns = c(sparse.columns, i)
+    }
+}
+training$classe = as.factor(training$classe)
+training = training[,-sparse.columns]
+testing = testing[,-sparse.columns]
+training = training[,-(1:7)]
+testing = testing[,-(1:7)]
+```
+
+#Training and Making Predictions
+
+First, the training set will be divided roughly in half so the prediction function can be tested on data outside of the data
+which was used for training.  
+
+```{r}
+library(caret); library(class)
+set.seed(1)
+sample = createDataPartition(training$classe, p = .5, list = FALSE)
+train = training[sample,]
+validate = training[-(sample),]
+```
+
+Nearest neighbors will be the starting point to make the predictions. It makes sense since body parts will move similar
+for the various classifications. 
+
+```{r}
+#don't include response to train and validate
+knn.pred = knn(train[,-50], validate[,-50], train$classe, k = 9, prob = TRUE)
+confusionMatrix(knn.pred, validate$classe) 
+```
+
+The accuracy here is about 84%. Improvement could possibly be made by normalizing the data. This way variables have the same 
+mean and standard deviation. 
+
+```{r}
+standardized.train = scale(train[,-50])
+standardized.validate = scale(validate[,-50])
+standardized.test = scale(testing[,-50])
+
+standardized.knn.pred = knn(standardized.train, standardized.validate, train$classe, k = 1, prob = TRUE)
+confusionMatrix(standardized.knn.pred, validate$classe) 
+```
+
+The above code uses knn again but the data is normalized and the number of neighbors used to make the predicition is 1 insted
+of 9. The accuracy improved all the way to 98%. This is a very accurate model. 
+
+#Estimating out of sample error
+Since the test set has only 20 observations it makes sense to cross validate with 20 observations as well. Running the algorithm many times on different validation sets and keeping track of the lower and upper confidence intervals will give a accurate estimate of the out of sample error. The code below runs 100 of these samples and keeps track of the lower and upper bounds.
+
+```{r}
+lower = c()
+upper = c()
+for(i in 1:100){
+    sample = sample(1:nrow(training),20)
+    train = training[-sample,]
+    validate = training[sample,]
+    standardized.train = scale(train[,-50])
+    standardized.validate = scale(validate[,-50])
+    standardized.knn.pred = knn(standardized.train, standardized.validate, train$classe, k = 1, prob = TRUE)
+    matrix = confusionMatrix(standardized.knn.pred, validate$classe) 
+    lower = c(lower, matrix$overall[3])
+    upper = c(upper, matrix$overall[4])
+}
+mean(lower)
+mean(upper)
+```
+
+
+#Conlusion
+The average of all the lower 95% confidence is about 80.6% and the average upper is about 99.8%. Thus we can expect an accuracy
+between 80.6% and 99.8% when we predict our test set.
+
